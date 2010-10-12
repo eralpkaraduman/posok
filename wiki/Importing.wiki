@@ -1,8 +1,8 @@
 #summary How to import the project to FlashBuilder 4
-  * Checkout the trunk
-  * Open up FB4
-  * Switch workspace to where you had checkedout the project
-  * Import > FlashBuilder project
-  * Give folder path to "/LD18" inside trunk.
-  * Done
+ * Checkout the trunk
+ * Open up FB4
+ * Switch workspace to where you had checkedout the project
+ * Import > FlashBuilder project
+ * Give folder path to "/LD18" inside trunk.
+ * Done
 = Details =
