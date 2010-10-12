@@ -1,5 +1,3 @@
-#summary wtf is FlashBuilder
-
-= Introduction =
+#summary wtf is FlashBuilder?
 
 FlashBuilder is an eclipse based Flash authoring tool 
