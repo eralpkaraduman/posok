@@ -1,5 +1,3 @@
-#summary How to import the project to FlashBuilder 4
-
 ==How to import the project to FlashBuilder 4==
 
 # Checkout the trunk
