@@ -3,6 +3,9 @@ package levels
 	import actors.Tractor;
 	import actors.TractorProps;
 	import actors.TractorShipThruster;
+	import com.godstroke.flixel.SpaceThing;
+	import com.godstroke.flixel.StarField;
+	import com.godstroke.flixel.StarSpawner;
 	
 	import effects.EmitterProps;
 	
@@ -27,32 +30,37 @@ package levels
 		private var tractor:Tractor;
 		private var tractorThruster:TractorShipThruster;
 		public var hud:HUD;
-		public var scenery:L1_scenery;
 		
 		//emitters
 		[Embed(source = "../../gfx/thrusterBurst.png")] private var em_thrusterBurst:Class;
 		private var tractorThrusterEmitter:FlxEmitter;
+		private var scenery_1:StarSpawner;
+		private var scenery_2:StarSpawner;
+		private var scenery_3:StarSpawner;
+		
 		
 		// pass any other actor here
 		public var cameraFocus:FlxObject = new FlxObject(FlxG.width/2,FlxG.height/2);
 		
 		override public function create():void
 		{
-			 scenery = new L1_scenery();
-			 add(scenery);
-			
-			
 			tractor = new Tractor(FlxG.width/2,FlxG.height/2);
 			tractorThruster = new TractorShipThruster();
 			tractor.thruster = tractorThruster;
+			
+			scenery_1 = new StarSpawner(.9);
+			scenery_2 = new StarSpawner(.6);
+			scenery_3 = new StarSpawner(.3);
+			
 			add(tractorThruster);
 			add(tractor);
 			
-			FlxG.follow(cameraFocus,2);
-			
-			changeFocusTo(tractor);
+			//FlxG.follow(cameraFocus,2);
+			FlxG.follow(tractor,1);
+			//changeFocusTo(tractor);
 			
 			hud = new HUD();
+			hud.scrollFactor = new FlxPoint(0, 0); // glues it there;
 			add(hud);
 			
 			
@@ -66,10 +74,10 @@ package levels
 		
 		
 		override public function update():void{
-			
-			
-			
 			super.update();
+			scenery_1.draw();
+			scenery_2.draw();
+			scenery_3.draw();
 		}
 		
 		public function getTractorProps():TractorProps{

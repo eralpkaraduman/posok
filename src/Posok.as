@@ -4,7 +4,7 @@ package
 
 	import org.flixel.*;
 
-	[SWF(width="960", height="640", backgroundColor="#000000",frameRate="60")]
+	[SWF(width="960", height="640", backgroundColor="#000000",frameRate="32")]
 
 	[Frame(factoryClass="Preloader")]
 
