@@ -25,7 +25,7 @@ package com.godstroke.flixel
 				// change the transparency of the star based on it's velocity
 				var transp:uint = (Math.round(16 * (-vel / speedMultiplier) - 1) << 24);
 				
-				str.createGraphic(2, 2, 0x00ffffff | transp);
+				str.createGraphic(1, 1, 0x00ffffff | transp);
 				str.velocity.x = cosang * vel;
 				str.velocity.y = sinang * vel;
 				_stars.add(str);
