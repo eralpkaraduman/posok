@@ -48,7 +48,7 @@ package levels
 			tractorThruster = new TractorShipThruster();
 			tractor.thruster = tractorThruster;
 			
-			scenery_1 = new StarSpawner(.9);
+			 scenery_1 = new StarSpawner(.9);
 			scenery_2 = new StarSpawner(.6);
 			scenery_3 = new StarSpawner(.3);
 			

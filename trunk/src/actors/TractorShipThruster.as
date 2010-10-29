@@ -57,8 +57,8 @@ package actors
 			//emitters
 			thrusters = FlxG.state.add(new FlxEmitter(0,0)) as FlxEmitter;
 			thrusters.gravity = 0;
-			thrusters.createSprites(em_thrusterBurst,50,4,true);
-			thrusters.delay = 0.01;
+			thrusters.createSprites(em_thrusterBurst,50,0,true);
+			thrusters.delay = 1;
 			thrusters.height = 4;
 			thrusters.width = 4;
 			//thrusters.kill();
@@ -86,11 +86,11 @@ package actors
 			var sx:Number = ILevel(FlxG.state).getTractor().velocity.x;
 			var sy:Number = ILevel(FlxG.state).getTractor().velocity.y;
 			
-			sx*=.15;
-			sy*=.15;
+			sx*=0.1;
+			sy*=0.1;
 			
-			thrusters.setXSpeed(-sx,-sx);
-			thrusters.setYSpeed(-sy,-sy);
+			thrusters.setXSpeed(-sx/140,-sx);
+			thrusters.setYSpeed(-sy/140,-sy);
 			
 			var q:String = pickQuarter(trac.aimAngle);
 			play(q,true);
@@ -100,11 +100,30 @@ package actors
 		
 		// emit particles
 		public function burst():void{
-			thrusters.start(false,0.01,150);
+			/*
+			var sx:Number = ILevel(FlxG.state).getTractor().velocity.x;
+			var sy:Number = ILevel(FlxG.state).getTractor().velocity.y;
+			
+			sx*=0.7;
+			sy*=0.7;
+			
+			thrusters.setXSpeed(-sx,-sx);
+			thrusters.setYSpeed(-sy,-sy);
+			*/
+			thrusters.start(false, 0.01,10);
 		}
 		
 		public function cutThrusters():void{
-			thrusters.stop(0);
+			/*
+			thrusters.velocity = new FlxPoint(0, 0);
+			thrusters.setXSpeed(0, 0);
+			thrusters.setYSpeed(0, 0);
+			*/
+			/*
+			thrusters.flicker(1);
+			thrusters.stop(, 1);
+			thrusters.
+			*/
 		}
 		
 		//utils
