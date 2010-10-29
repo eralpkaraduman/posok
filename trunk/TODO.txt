@@ -1,0 +1,12 @@
+- navigation course
+- combat training course
+- docking with modules
+- advanced combat training
+- ambush!
+- escape
+- docking with stations
+- trading
+
+- Combat module
+- Cargo module
+- make them dockable
