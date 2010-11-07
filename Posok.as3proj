@@ -4,7 +4,7 @@
   <output>
     <movie disabled="False" />
     <movie input="" />
-    <movie path="bin\$(ProjectID).swf" />
+    <movie path="bin\posok.swf" />
     <movie fps="60" />
     <movie width="960" />
     <movie height="640" />

@@ -21,7 +21,7 @@ package
 			
 			var t:FlxText;
 
-			t = new FlxText(0,FlxG.height/2-10,FlxG.width,"LD18");
+			t = new FlxText(0,FlxG.height/2-10,FlxG.width,"POSOK v0.3");
 
 			t.size = 16;
 

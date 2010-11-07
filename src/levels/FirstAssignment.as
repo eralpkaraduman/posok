@@ -1,5 +1,6 @@
 package levels
 {
+	import actors.Drone;
 	import actors.Tractor;
 	import actors.TractorProps;
 	import actors.TractorShipThruster;
@@ -48,8 +49,8 @@ package levels
 			tractorThruster = new TractorShipThruster();
 			tractor.thruster = tractorThruster;
 			
-			 scenery_1 = new StarSpawner(.9);
-			scenery_2 = new StarSpawner(.6);
+			scenery_1 = new StarSpawner(.7);
+			scenery_2 = new StarSpawner(.5);
 			scenery_3 = new StarSpawner(.3);
 			
 			add(tractorThruster);
@@ -62,6 +63,11 @@ package levels
 			hud = new HUD();
 			hud.scrollFactor = new FlxPoint(0, 0); // glues it there;
 			add(hud);
+			
+			// testing drones
+			var drone:Drone = new Drone(150, 150);
+			add(drone);
+			//--
 			
 			
 		}
