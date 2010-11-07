@@ -8,6 +8,8 @@ package levels
 	import com.godstroke.flixel.StarField;
 	import com.godstroke.flixel.StarSpawner;
 	import flash.geom.Point;
+	import org.flixel.FlxU;
+	import ui.NaviCom;
 	
 	import effects.EmitterProps;
 	
@@ -37,9 +39,12 @@ package levels
 		private var scenery_2:StarSpawner;
 		private var scenery_3:StarSpawner;
 		
+		//hud
+		private var naviCom:NaviCom;
 		
 		// pass any other actor here
 		public var cameraFocus:FlxObject = new FlxObject(FlxG.width/2,FlxG.height/2);
+		private var droneGroup:FlxGroup;
 		
 		override public function create():void
 		{
@@ -72,16 +77,30 @@ package levels
 			hud = new HUD();
 			hud.scrollFactor = new FlxPoint(0, 0); // glues it there;
 			//tractor.scrollFactor = new FlxPoint(0, 0); // glues it there;
-			add(hud);
+			
 			
 			
 			// testing drones
-			var drone:Drone = new Drone(150, 150);
-			add(drone);
+			droneGroup = new FlxGroup();
+			var drone1:Drone = new Drone(400, 400);
+			droneGroup.add(drone1);
+			var drone2:Drone = new Drone(-510, -440);
+			droneGroup.add(drone2);
+			var drone3:Drone = new Drone(312, -652);
+			droneGroup.add(drone3);
+			var drone4:Drone = new Drone(-213, 521);
+			droneGroup.add(drone4);
+			add(droneGroup);
 			//--
 			
-			// cursor
-			
+			// navicom
+			naviCom = new NaviCom(tractor);
+			naviCom.addToTracker(drone1);
+			naviCom.addToTracker(drone2);
+			naviCom.addToTracker(drone3);
+			naviCom.addToTracker(drone4);
+			hud.add(naviCom);
+			add(hud);
 			//-
 			
 		}
@@ -98,6 +117,20 @@ package levels
 			scenery_1.draw();
 			scenery_2.draw();
 			scenery_3.draw();
+			naviCom.scan();
+			collideDrones();
+		}
+		
+		private function collideDrones():void
+		{
+			FlxU.overlap(droneGroup, tractor,collideDrones_callBack);
+		}
+		
+		private function collideDrones_callBack(o1:FlxObject,o2:FlxObject):void
+		{
+			trace("COL");
+			o1.dead = true;
+			o2.dead = true;
 		}
 		
 		public function getTractorProps():TractorProps{

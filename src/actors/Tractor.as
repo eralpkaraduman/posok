@@ -2,6 +2,7 @@ package actors
 {
 	import effects.EmitterProps;
 	import effects.IEngine;
+	import org.flixel.FlxPoint;
 	
 	import levels.ILevel;
 	
@@ -23,10 +24,17 @@ package actors
 		
 		public function Tractor(x:Number=0, y:Number=0)
 		{
-			super(x, y);
-			
-			loadGraphic(gfx_tractorShip,true,true,13,15);
-			
+			super()
+			//offset = new FlxPoint(-5, 5);
+			loadGraphic(gfx_tractorShip, false, true, 13, 15);
+			//createGraphic(3, 3);
+			//offset = new FlxPoint(-1, -1);
+			//width = 13;
+			width = 13;
+			//width = 15;
+			height = 15;
+			offset.x = 0;
+			offset.y = 0;
 		}
 		
 		override public function update():void{
