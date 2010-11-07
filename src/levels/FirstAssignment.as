@@ -7,10 +7,10 @@ package levels
 	import com.godstroke.flixel.SpaceThing;
 	import com.godstroke.flixel.StarField;
 	import com.godstroke.flixel.StarSpawner;
+	import flash.geom.Point;
 	
 	import effects.EmitterProps;
 	
-	import flashx.textLayout.elements.OverflowPolicy;
 	
 	import org.flixel.FlxEmitter;
 	import org.flixel.FlxG;
@@ -22,8 +22,6 @@ package levels
 	import org.flixel.FlxText;
 	
 	import ui.HUD;
-	
-	
 	
 	
 	public class FirstAssignment extends FlxState implements ILevel
@@ -53,22 +51,38 @@ package levels
 			scenery_2 = new StarSpawner(.5);
 			scenery_3 = new StarSpawner(.3);
 			
+			
+			
+			
+			
+			//FlxG.followLead = new Point(2, 2);
+			//FlxG.followLerp = 1;
+			//FlxG.followLead
+			
+			//320/480)
+			
+			
+			//changeFocusTo(tractor);
 			add(tractorThruster);
 			add(tractor);
 			
-			//FlxG.follow(cameraFocus,2);
 			FlxG.follow(tractor,1);
-			//changeFocusTo(tractor);
+			FlxG.followAdjust(3, 3*(FlxG.height/FlxG.width));
 			
 			hud = new HUD();
 			hud.scrollFactor = new FlxPoint(0, 0); // glues it there;
+			//tractor.scrollFactor = new FlxPoint(0, 0); // glues it there;
 			add(hud);
+			
 			
 			// testing drones
 			var drone:Drone = new Drone(150, 150);
 			add(drone);
 			//--
 			
+			// cursor
+			
+			//-
 			
 		}
 		
