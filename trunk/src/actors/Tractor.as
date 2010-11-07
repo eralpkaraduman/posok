@@ -11,7 +11,8 @@ package actors
 	
 	public class Tractor extends FlxSprite
 	{
-		[Embed(source = "../../gfx/tractorShip.png")] private var gfx_tractorShip:Class;
+		//[Embed(source = "../../gfx/tractorShip.png")] private var gfx_tractorShip:Class;
+		[Embed(source = "../../gfx/tractorShip-repaint.png")] private var gfx_tractorShip:Class;
 		
 		private var speed:Number = 0;
 		private var maxSpeed:Number = 90;

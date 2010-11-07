@@ -25,7 +25,7 @@ package
 			<levels>
 
 				<level>
-					<name>First Assignment</name>
+				<name>Leaning Basic Flight</name>
 					<stateName>levels.FirstAssignment</stateName>
 					<definition></definition>
 				</level>
