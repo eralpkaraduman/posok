@@ -4,13 +4,11 @@ package
 
 	import org.flixel.*;
 
-	//[SWF(width="960", height="640", backgroundColor="#000000",frameRate="32")]
-	//[SWF(width="480", height="320", backgroundColor="#000000",frameRate="12")]
+	[SWF(width="960", height="640", backgroundColor="#000000",frameRate="52")]
+	//[SWF(width="480", height="320", backgroundColor="#000000",frameRate="52")]
 
-	[Frame(factoryClass="Preloader")]
-
-
-
+	[Frame(factoryClass = "Preloader")]
+	
 	public class Posok extends FlxGame
 	{
 		[Embed(source = "../gfx/cursor.png")] private var gfx_cursor:Class;

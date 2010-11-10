@@ -25,12 +25,10 @@ package
 			<levels>
 
 				<level>
-				<name>Leaning Basic Flight</name>
+				<name>Technical Assisance</name>
 					<stateName>levels.FirstAssignment</stateName>
 					<definition></definition>
 				</level>
-				
-			
 			</levels>
 		</flow>
 		
