@@ -5,7 +5,7 @@
     <movie disabled="False" />
     <movie input="" />
     <movie path="bin\posok.swf" />
-    <movie fps="60" />
+    <movie fps="52" />
     <movie width="960" />
     <movie height="640" />
     <movie version="11" />

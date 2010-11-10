@@ -48,6 +48,50 @@ package ui
 		public function scan():void {
 			for (var i:int = 0; i <_trackList.length ; i++) 
 			{
+				var trackTarget:FlxSprite = _trackList[i];
+				var trackPointer:NaviComPointer = _pointerList[i];
+				var ttp:Point = new Point(trackTarget.getScreenXY().x, trackTarget.getScreenXY().y);
+				
+				var lmin:Number = 5;
+				var lmax_v:Number = FlxG.height - 10;
+				var lmax_h:Number = FlxG.width - 10;
+				
+				trackPointer.x = ttp.x < lmin ? lmin : ttp.x;
+				trackPointer.x = trackPointer.x > lmax_h ? lmax_h : trackPointer.x;
+				
+				trackPointer.y = ttp.y > lmax_v ? lmax_v : ttp.y;
+				trackPointer.y = trackPointer.y < lmin ? lmin : trackPointer.y;
+				
+				if(trackPointer.y == lmin && trackPointer.x == lmax_h) trackPointer.play("UR", true);
+				else if(trackPointer.y == lmin && trackPointer.x == lmin) trackPointer.play("UL", true);
+				else if(trackPointer.y == lmax_v && trackPointer.x == lmax_h)trackPointer.play("DR", true);
+				else if(trackPointer.y == lmax_v && trackPointer.x == lmin)trackPointer.play("DL", true);
+				else if (trackPointer.y == lmin) trackPointer.play("U", true);
+				else if (trackPointer.y == lmax_v) trackPointer.play("D", true);
+				else if (trackPointer.x == lmax_h) trackPointer.play("R", true);
+				else if (trackPointer.x == lmin) trackPointer.play("L", true);  
+				else trackPointer.play("LOCK", true)
+				
+				//trackPointer.y = 50;
+				
+				/*
+				var out_left:Boolean = false;
+				var out_right:Boolean = false;
+				var out_top:Boolean = false;
+				var out_bottom:Boolean = false;
+				*/
+				// out of left bounds?
+				
+				//if (trackTarget.getScreenXY().x < 0) out_left = true;
+				//if()
+				
+				//out of right bounds?
+				
+				//out of top bounds?
+				
+				// out of bottom bounds?
+				
+				/*
 				if (_pointerList[i].dead) {
 					_pointerList[i].visible = false;
 					continue;
@@ -84,8 +128,9 @@ package ui
 					_pointerList[i].y = y_targ - 5;
 					
 					_pointerList[i].direct(aim_degs);
+					
 				}
-				
+				*/
 				
 			}
 		}
