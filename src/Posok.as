@@ -13,8 +13,8 @@ package
 	{
 		[Embed(source = "../gfx/cursor.png")] private var gfx_cursor:Class;
 		public function Posok()
-
 		{
+			//super(480, 320, MenuState, 1);
 			super(480, 320, MenuState, 2);
 			FlxG.mouse.show(gfx_cursor, 3, 3);
 		}
