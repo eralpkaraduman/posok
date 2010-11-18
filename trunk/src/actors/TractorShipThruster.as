@@ -126,6 +126,10 @@ package actors
 			*/
 		}
 		
+		public function hideThrusterBurst():void {
+			thrusters.stop();
+		}
+		
 		//utils
 		private function pickQuarter(ang:Number):String{
 			for(var i:Number = 0 ; i<rotationQuarters.length ; i++){

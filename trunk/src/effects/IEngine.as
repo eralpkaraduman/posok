@@ -4,5 +4,7 @@ package effects
 	{
 		function burst():void;
 		function cutThrusters():void;
+		function hideThrusterBurst():void;
+		
 	}
 }

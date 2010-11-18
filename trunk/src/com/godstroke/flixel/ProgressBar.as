@@ -1,9 +1,13 @@
 package com.godstroke.flixel 
 {
+	import flash.display.BitmapData;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
+	import org.flixel.FlxG;
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
+	import org.flixel.FlxText;
 	
 	/**
 	$(CBI)* ...
@@ -12,17 +16,26 @@ package com.godstroke.flixel
 	public class ProgressBar extends FlxGroup 
 	{
 		private var _rectangle:Rectangle;
+		private var _message:String;
 		public var border:FlxGroup;
 		public var bar:FlxSprite;
 		public var border_n:FlxSprite;
 		public var border_w:FlxSprite;
 		public var border_e:FlxSprite;
 		public var border_s:FlxSprite;
+		private var txWhite:FlxText;
 		
-		public function ProgressBar(rect:Rectangle)
+		
+		
+		public function ProgressBar(rect:Rectangle,message:String)
 		{
 			super();
+			this._message = message;
 			this._rectangle = rect;
+			
+			
+			
+			
 			
 			scrollFactor = new FlxPoint(0,0);
 			border = new FlxGroup();
@@ -57,6 +70,13 @@ package com.godstroke.flixel
 			bar.origin.y = 0;
 			add(bar);
 			
+			txWhite = new FlxText(rect.x-2, rect.y-11, rect.width, _message);
+			
+			txWhite.scrollFactor = new FlxPoint(0, 0);
+			add(txWhite);
+			
+			
+			
 			bar.scale.x = 0;
 		}
 		
@@ -67,7 +87,6 @@ package com.godstroke.flixel
 		public function step(percent:Number):void
 		{
 			bar.scale.x = percent;
-			//bar.x = (_rect.width-2)*percent;
 		}
 		
 	}

@@ -7,7 +7,8 @@ package actors
 	$(CBI)*/
 	public interface ISpaceObject 
 	{
-		
+		function setStatus(string:String):Boolean
+		function getCurrentStatus():String
 	}
 	
 }

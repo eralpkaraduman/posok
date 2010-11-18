@@ -1,6 +1,8 @@
 package levels
 {
+	import actors.ActorStatuses;
 	import actors.Drone;
+	import actors.ISpaceObject;
 	import actors.Tractor;
 	import actors.TractorProps;
 	import actors.TractorShipThruster;
@@ -61,7 +63,7 @@ package levels
 			add(tractor);
 			
 			FlxG.follow(tractor,1);
-			FlxG.followAdjust(3, 3*(FlxG.height/FlxG.width));
+			FlxG.followAdjust(2, 2*(FlxG.height/FlxG.width));
 			
 			hud = new HUD();
 			
@@ -75,12 +77,15 @@ package levels
 			droneGroup.add(drone3);
 			var drone4:Drone = new Drone(-213, 521);
 			droneGroup.add(drone4);
+			var drone5:Drone = new Drone(50, 50);
+			droneGroup.add(drone5);
 			add(droneGroup);
 			
 			hud.addToTracker(drone1);
 			hud.addToTracker(drone2);
 			hud.addToTracker(drone3);
 			hud.addToTracker(drone4);
+			hud.addToTracker(drone5);
 			
 			add(hud);
 			//-
@@ -131,11 +136,41 @@ package levels
 		
 		public function muteTractor():void {
 			tractor.canMove = false;
+			tractor.thruster.hideThrusterBurst();
 		}
 		
 		public function unmuteTractor():void {
 			tractor.canMove = true;
 		}
+		
+		public function actorStatusChanged(so:ISpaceObject):void {
+			if (so.getCurrentStatus() == ActorStatuses.DRONE_ROUTINE) {
+				hud.removeFromTracker(FlxObject(so));
+				//trace("hud.naviCom.trackList.length " + hud.naviCom.trackList.length);
+				//trace("hud.naviCom.notNullTrackerListLength " + hud.naviCom.notNullTrackerListLength);
+				if (hud.naviCom.notNullTrackerListLength <= 0) {
+					levelClear();
+				}
+			}
+		}
+		
+		private function levelClear():void
+		{
+			var levelClearTX:FlxText = new FlxText(0, FlxG.height / 2, FlxG.width, "MISSION SUCCESSFUL!");
+			levelClearTX.alignment = "center";
+			levelClearTX.scrollFactor = new FlxPoint(0, 0);
+			add(levelClearTX);
+			
+			FlxG.fade.start(0xff000000, 3, onLevelCLearFadeComplete, true);
+			
+		}
+		
+		private function onLevelCLearFadeComplete():void
+		{
+			FlxG.state = new MenuState();
+		}
+		
+		
 		
 		
 	}
