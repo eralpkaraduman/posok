@@ -10,5 +10,8 @@ package levels
 		function displayAngle(angle:Number):void;
 		function getTractorProps():TractorProps;
 		function getTractor():Tractor;
+		
+		function muteTractor():void;
+		function unmuteTractor():void;
 	}
 }
