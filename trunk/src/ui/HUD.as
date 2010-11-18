@@ -32,7 +32,7 @@ package ui
 		private var connectionTimer:Number;
 		private var connecting:Boolean = false;
 		private var connectingTo:FlxObject = null;
-		private var connectEDTo:FlxObject = null;
+		private var _connectEDTo:FlxObject = null;
 		private var connectionStatusProgressBar:ProgressBar;
 		private var connectionTimeOut:Number = 3;
 		
@@ -89,8 +89,15 @@ package ui
 		
 		private function onReAssembleClick():void
 		{
-			ISpaceObject(connectEDTo).setStatus(ActorStatuses.DRONE_ROUTINE);
+			
+			if (!_connectEDTo) {
+				FlxG.log("REASSEMBLE FAILED!");
+				return;
+			}
+			ISpaceObject(_connectEDTo).setStatus(ActorStatuses.DRONE_ROUTINE);
 			setFlightMode();
+			
+			FlxG.log("REASSEMBLE SUCCEED!");
 		}
 		
 		private function onDisconnectClick():void
@@ -187,14 +194,15 @@ package ui
 		private function connectionBroken():void
 		{
 			connectingTo = null
-			connectEDTo = null
+			_connectEDTo = null
 			ILevel(FlxG.state).unmuteTractor();
 			ILevel(FlxG.state).changeFocusTo(ILevel(FlxG.state).getTractor());
 		}
 		
 		private function connectionEstablished():void
 		{
-			connectEDTo = connectingTo;
+			_connectEDTo = connectingTo;
+			trace("connectEDTo " + connectEDTo);
 			connectingTo = null
 			ILevel(FlxG.state).muteTractor();
 			
@@ -206,7 +214,7 @@ package ui
 			FlxState.bgColor = 0xFF1d2613;
 			
 			add(diagnosticModeGroup);
-			crossHairGreen.flicker(2);
+			//crossHairGreen.flicker(2);
 			ILevel(FlxG.state).changeFocusTo(connectEDTo);
 		}
 		
@@ -231,6 +239,8 @@ package ui
 		}
 		
 		public function get naviCom():NaviCom { return _naviCom; }
+		
+		public function get connectEDTo():FlxObject { return _connectEDTo; }
 		
 		
 	}
