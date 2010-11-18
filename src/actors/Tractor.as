@@ -21,6 +21,7 @@ package actors
 		private var minSpeed:Number = 0;
 		
 		public var thruster:IEngine = null;
+		public var canMove:Boolean = true;
 		
 		public function Tractor(x:Number=0, y:Number=0)
 		{
@@ -38,7 +39,12 @@ package actors
 		}
 		
 		override public function update():void{
-			ILevel(FlxG.state).displayAngle(aimAngle());
+			
+			if (!canMove) {
+				speed-=(speed_incr*4);
+				if (thruster) thruster.cutThrusters();
+				return;
+			}
 			
 			
 			//variate speed

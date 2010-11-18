@@ -9,6 +9,7 @@ package ui
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxU;
+	import actors.ISpaceObject;
 	
 	/**
 	$(CBI)* ...
@@ -16,7 +17,7 @@ package ui
 	$(CBI)*/
 	public class NaviCom extends FlxGroup
 	{
-		private var _trackList:Vector.<FlxSprite> = new Vector.<FlxSprite>()
+		private var _trackList:Vector.<FlxObject> = new Vector.<FlxObject>()
 		private var _pointerList:Vector.<NaviComPointer>  = new Vector.<NaviComPointer>();
 		private var _tractor:Tractor;
 		private var _trackerEnum:uint = 0;
@@ -48,7 +49,7 @@ package ui
 		public function scan():void {
 			for (var i:int = 0; i <_trackList.length ; i++) 
 			{
-				var trackTarget:FlxSprite = _trackList[i];
+				var trackTarget:FlxObject = _trackList[i];
 				var trackPointer:NaviComPointer = _pointerList[i];
 				var ttp:Point = new Point(trackTarget.getScreenXY().x, trackTarget.getScreenXY().y);
 				
@@ -146,6 +147,8 @@ package ui
 			
 			return FlxU.getAngle((to.x - from.x), (to.y - from.y));
 		}
+		
+		public function get trackList():Vector.<FlxObject> { return _trackList; }
 		
 	}
 

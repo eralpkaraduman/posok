@@ -57,17 +57,6 @@ package levels
 			scenery_3 = new StarSpawner(.3);
 			
 			
-			
-			
-			
-			//FlxG.followLead = new Point(2, 2);
-			//FlxG.followLerp = 1;
-			//FlxG.followLead
-			
-			//320/480)
-			
-			
-			//changeFocusTo(tractor);
 			add(tractorThruster);
 			add(tractor);
 			
@@ -75,10 +64,6 @@ package levels
 			FlxG.followAdjust(3, 3*(FlxG.height/FlxG.width));
 			
 			hud = new HUD();
-			hud.scrollFactor = new FlxPoint(0, 0); // glues it there;
-			//tractor.scrollFactor = new FlxPoint(0, 0); // glues it there;
-			
-			
 			
 			// testing drones
 			droneGroup = new FlxGroup();
@@ -91,15 +76,12 @@ package levels
 			var drone4:Drone = new Drone(-213, 521);
 			droneGroup.add(drone4);
 			add(droneGroup);
-			//--
 			
-			// navicom
-			naviCom = new NaviCom(tractor);
-			naviCom.addToTracker(drone1);
-			naviCom.addToTracker(drone2);
-			naviCom.addToTracker(drone3);
-			naviCom.addToTracker(drone4);
-			hud.add(naviCom);
+			hud.addToTracker(drone1);
+			hud.addToTracker(drone2);
+			hud.addToTracker(drone3);
+			hud.addToTracker(drone4);
+			
 			add(hud);
 			//-
 			
@@ -113,11 +95,13 @@ package levels
 		
 		
 		override public function update():void{
+			
+			
 			super.update();
 			scenery_1.draw();
 			scenery_2.draw();
 			scenery_3.draw();
-			naviCom.scan();
+			hud.step();
 			collideDrones();
 		}
 		
@@ -128,7 +112,6 @@ package levels
 		
 		private function collideDrones_callBack(o1:FlxObject,o2:FlxObject):void
 		{
-			trace("COL");
 			o1.dead = true;
 			o2.dead = true;
 		}
@@ -146,7 +129,13 @@ package levels
 			FlxG.followTarget = cameraFocus;
 		}
 		
+		public function muteTractor():void {
+			tractor.canMove = false;
+		}
 		
+		public function unmuteTractor():void {
+			tractor.canMove = true;
+		}
 		
 		
 	}
