@@ -77,6 +77,7 @@ package levels
 			droneGroup.add(drone3);
 			var drone4:Drone = new Drone(-213, 521);
 			droneGroup.add(drone4);
+			//var drone5:Drone = new Drone(150, -350);
 			var drone5:Drone = new Drone(50, 50);
 			droneGroup.add(drone5);
 			add(droneGroup);
@@ -107,19 +108,11 @@ package levels
 			scenery_2.draw();
 			scenery_3.draw();
 			hud.step();
-			collideDrones();
 		}
 		
-		private function collideDrones():void
-		{
-			FlxU.overlap(droneGroup, tractor,collideDrones_callBack);
-		}
 		
-		private function collideDrones_callBack(o1:FlxObject,o2:FlxObject):void
-		{
-			o1.dead = true;
-			o2.dead = true;
-		}
+		
+		
 		
 		public function getTractorProps():TractorProps{
 			return new TractorProps(tractor.x,tractor.y,tractor.facing,tractor.aimAngle());
@@ -167,9 +160,13 @@ package levels
 		
 		private function onLevelCLearFadeComplete():void
 		{
-			FlxG.state = new MenuState();
+			FlxG.state = new PlayState();
+			return;
 		}
 		
+		public function addEmitter(emitter:FlxEmitter):void {
+			add(emitter);
+		}
 		
 		
 		
