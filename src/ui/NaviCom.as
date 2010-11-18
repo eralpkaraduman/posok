@@ -49,6 +49,8 @@ package ui
 		public function scan():void {
 			for (var i:int = 0; i <_trackList.length ; i++) 
 			{
+				if (!_trackList[i]) continue;
+				
 				var trackTarget:FlxObject = _trackList[i];
 				var trackPointer:NaviComPointer = _pointerList[i];
 				var ttp:Point = new Point(trackTarget.getScreenXY().x, trackTarget.getScreenXY().y);
@@ -148,8 +150,43 @@ package ui
 			return FlxU.getAngle((to.x - from.x), (to.y - from.y));
 		}
 		
+		public function removeFromTracker(flxObj:FlxObject):void
+		{
+			/*
+			// make pointer
+			var ptr:NaviComPointer = new NaviComPointer();
+			ptr.scrollFactor = new FlxPoint(0,0);
+			_pointerList[_trackerEnum] = ptr;
+			add(ptr);
+			// add to list
+			_trackList[_trackerEnum] = flxObj;
+			_trackerEnum++;
+			*/
+			
+			for (var i:int = 0; i <_trackList.length ; i++) 
+			{
+				if (_trackList[i] == flxObj) {
+					_trackList[i] = null;
+					remove(_pointerList[i]);
+					_pointerList[i] = null;
+					break;
+				}
+			}
+			
+		}
+		
 		public function get trackList():Vector.<FlxObject> { return _trackList; }
 		
+		public function get notNullTrackerListLength():uint {
+			var count:uint = 0;
+			for (var i:int = 0; i <_trackList.length ; i++) 
+			{
+				if (_trackList[i] != null) {
+					count++;
+				}
+			}
+			return count;
+		}
 	}
 
 }
